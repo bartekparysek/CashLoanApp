@@ -48,6 +48,7 @@ export default function ClientInfo() {
             placeholder="First Name"
             value={values.firstName}
           />
+          <span id="first-name-error">Please enter your first name</span>
         </div>
 
         <div className="field">
@@ -59,6 +60,7 @@ export default function ClientInfo() {
             placeholder="Last Name"
             value={values.lastName}
           />
+          <span id="last-name-error">Please enter your last name</span>
         </div>
 
         <div className="field">
@@ -70,6 +72,7 @@ export default function ClientInfo() {
             placeholder="E-mail"
             value={values.email}
           />
+          <span id="email-error">Please enter an email address</span>
         </div>
 
         <div className="field">
@@ -81,6 +84,7 @@ export default function ClientInfo() {
             placeholder="Address"
             value={values.address}
           />
+          <span id="address-error">Please enter an address </span>
         </div>
       </form>
     </div>

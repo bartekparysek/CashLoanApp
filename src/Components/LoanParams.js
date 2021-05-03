@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function LoanParams() {
@@ -8,52 +8,38 @@ export default function LoanParams() {
     installment: null,
     interestRate: 7.2,
     interest: null,
-    rir: null,
+    apr: null,
     totalPayOff: null
   });
 
   const calculateLoanParams = () => {
-    const loanPeriodDays = Math.round(loan.period * 30.436875);
-    console.log(loanPeriodDays);
-    const totalInterest =
-      ((loan.amount * parseFloat((loan.interestRate / 100).toFixed(3))) / 365) *
-      (loan.period * 30.436875);
-    const apr =
-      (totalInterest / loan.amount / (loan.period * 30.436875)) * 365 * 100;
-    const rir = (1 + apr) / (1 + 3.2) - 1;
-    const totalPayOff = parseInt(loan.amount + loan.interest);
-    return {
-      totalInterest,
-      rir,
-      totalPayOff
-    };
+    const loanPeriodDays = Math.round(loan.period * 30.41666);
+    const totalInterest = parseFloat((((loan.amount * parseFloat((loan.interestRate / 100).toFixed(3))) / 365) * loanPeriodDays).toFixed(2));
+    const totalPayOff = parseInt(loan.amount) + totalInterest;
+    const installment = parseFloat((totalPayOff / loan.period).toFixed(2));
+    const apr = parseFloat(((((totalPayOff / loan.amount) ** (365 / loanPeriodDays)) - 1) * 100).toFixed(2));
+
+    setLoan({
+      ...loan,
+      interest: totalInterest,
+      totalPayOff,
+      installment,
+      apr,
+    });
   };
 
-  // make a function which will return an object with these values
-  // guess : the scope of this function does not allow for a proper execution of this variables
-  // RRSO - use some official formula for this eg. https://www.telepolis.pl/fintech/poradniki/rrso-czym-jest-wzor-chwilowka-kredyt
-  // use ref instead of props or state
-  // parseInt is not working correctly
-
   const handleAmountChange = (event) => {
-    const { totalInterest, rir, totalPayOff } = calculateLoanParams();
     setLoan({
       ...loan,
       amount: event.target.value,
-      interest: Math.round(totalInterest * 100) / 100,
-      rir: rir,
-      totalPayOff: totalPayOff
+
     });
   };
 
   const handlePeriodChange = (event) => {
-    const { totalInterest, rir, totalPayOff } = calculateLoanParams();
     setLoan({
       ...loan,
       period: event.target.value,
-      interest: Math.round(totalInterest * 100) / 100,
-      rir: rir,
-      totalPayOff: totalPayOff
     });
   };
 
@@ -69,6 +55,8 @@ export default function LoanParams() {
           <div className="field">
             <input
               onChange={handleAmountChange}
+              onMouseUp={calculateLoanParams}
+              onTouchEnd={calculateLoanParams}
               type="range"
               min="1000"
               max="108000"
@@ -79,6 +67,7 @@ export default function LoanParams() {
             ></input>
             <input
               onChange={handleAmountChange}
+              onBlur={calculateLoanParams}
               type="number"
               min="1000"
               max="108000"
@@ -90,6 +79,8 @@ export default function LoanParams() {
           <div className="field">
             <input
               onChange={handlePeriodChange}
+              onMouseUp={calculateLoanParams}
+              onTouchEnd={calculateLoanParams}
               type="range"
               min="6"
               max="120"
@@ -100,6 +91,7 @@ export default function LoanParams() {
             ></input>
             <input
               onChange={handlePeriodChange}
+              onBlur={calculateLoanParams}
               type="number"
               min="6"
               max="120"
@@ -114,11 +106,11 @@ export default function LoanParams() {
           <h3> Your Loan Parameters : </h3>
           <p>Amount: {loan.amount} </p>
           <p>Period: {loan.period} </p>
-          <p>InterestRate: {loan.interestRate}% </p>
+          <p>Interest Rate: {loan.interestRate}% </p>
           <p>Interest: {loan.interest} </p>
           <p>Installment: {loan.installment} </p>
-          <p>Real Interest Rate:{loan.rir} </p>
-          <p>Total Pay Off Amount:{loan.totalPayOff} </p>
+          <p>Annual Percantage Rate:{loan.apr} % </p>
+          <p>Total Pay Off Amount: {loan.totalPayOff} </p>
         </section>
       </form>
       <Link to="/clientinfo">
