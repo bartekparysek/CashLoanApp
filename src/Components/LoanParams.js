@@ -74,7 +74,8 @@ export default function LoanParams() {
               name="loan-amount"
               value={loan.amount}
               placeholder="Amount between 1000 PLN and 108 000 PLN"
-            ></input>
+            >
+            </input>
           </div>
           <div className="field">
             <input
@@ -102,20 +103,24 @@ export default function LoanParams() {
           </div>
         </div>
 
-        <section>
-          <h3> Your Loan Parameters : </h3>
-          <p>Amount: {loan.amount} </p>
-          <p>Period: {loan.period} </p>
-          <p>Interest Rate: {loan.interestRate}% </p>
-          <p>Interest: {loan.interest} </p>
-          <p>Installment: {loan.installment} </p>
-          <p>Annual Percantage Rate:{loan.apr} % </p>
-          <p>Total Pay Off Amount: {loan.totalPayOff} </p>
-        </section>
+        <h3> Your Loan Terms : </h3>
+        <div className="loan-terms">
+          <ul>
+            <li>Amount: {loan.amount} PLN</li>
+            <li>Period: {loan.period} months </li>
+            <li>Interest Rate: {loan.interestRate}% </li>
+            <li>Interest: {loan.interest} PLN</li>
+            <li>Installment: {loan.installment} PLN </li>
+            <li>Annual Percantage Rate: {loan.apr} % </li>
+            <li>Total Pay Off Amount: {loan.totalPayOff} PLN </li>
+          </ul>
+        </div>
       </form>
-      <Link to="/clientinfo">
-        <button className="ui button">Next</button>
-      </Link>
+      <div>
+        <Link to="/clientinfo">
+          <button className="ui button">Next</button>
+        </Link>
+      </div>
     </div>
   );
 }

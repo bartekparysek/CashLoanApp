@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import LoanParams from "../src/Components/LoanParams";
 import ClientInfo from "../src/Components/ClientInfo";
 import Invitation from "./Components/Invitation";
+import Finish from "./Components/Finish";
+import './styles.css';
 
 export default function App() {
   return (
@@ -13,6 +15,7 @@ export default function App() {
           <Route path="/" exact component={Invitation} />
           <Route path="/loanparams" component={LoanParams} />
           <Route path="/clientinfo" component={ClientInfo} />
+          <Route path="/finish" component={Finish} />
         </Switch>
       </div>
     </Router>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function ClientInfo() {
   const [values, setValues] = useState({
@@ -7,6 +8,7 @@ export default function ClientInfo() {
     email: "",
     address: ""
   });
+  const [submitted, setSubmitted] = useState(false);
 
   const handleFirstNameChange = (event) => {
     setValues((values) => ({
@@ -36,9 +38,14 @@ export default function ClientInfo() {
     }));
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmitted(true);
+  }
+
   return (
-    <div className="credit-app">
-      <form className="ui form">
+    <div className="client-info">
+      <form className="ui form" onSubmit={handleSubmit}>
         <div className="field">
           <label>First Name</label>
           <input
@@ -48,7 +55,7 @@ export default function ClientInfo() {
             placeholder="First Name"
             value={values.firstName}
           />
-          <span id="first-name-error">Please enter your first name</span>
+          {submitted && !values.firstName && <span id="first-name-error">Please enter your first name</span>}
         </div>
 
         <div className="field">
@@ -60,7 +67,7 @@ export default function ClientInfo() {
             placeholder="Last Name"
             value={values.lastName}
           />
-          <span id="last-name-error">Please enter your last name</span>
+          {submitted && !values.lastName && <span id="last-name-error">Please enter your last name</span>}
         </div>
 
         <div className="field">
@@ -71,8 +78,9 @@ export default function ClientInfo() {
             name="first-name"
             placeholder="E-mail"
             value={values.email}
+            pattern="(\w\.?)+@[\w\.-]+\.\w{2,4}"
           />
-          <span id="email-error">Please enter an email address</span>
+          {submitted && !values.email && <span id="email-error">Please enter an email address</span>}
         </div>
 
         <div className="field">
@@ -84,12 +92,15 @@ export default function ClientInfo() {
             placeholder="Address"
             value={values.address}
           />
-          <span id="address-error">Please enter an address </span>
+          {submitted && !values.address && <span id="address-error">Please enter an address </span>}
         </div>
       </form>
-    </div>
+      <div>
+        <Link to="/finish">
+          <button onSubmit={handleSubmit}>Submit</button>
+        </Link>
+      </div>
 
-    // submit button
-    // modal with success message
+    </div>
   );
 }
