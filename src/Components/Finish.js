@@ -5,14 +5,16 @@ import { MdCheckCircle } from 'react-icons/md';
 
 export default function Finish() {
    return (
-      <div className="finish">
-         <div className="finish-message">
-            <MdCheckCircle />
-            <h3>Your applicacation has been submited</h3>
-            <Link to='/'>
-               <button> Start Again</button>
-            </Link>
+      <section>
+         <div className="finish">
+            <div className="finish-message">
+               <MdCheckCircle />
+               <h3>Your applicacation has been submited</h3>
+               <Link to='/'>
+                  <button> Start Again</button>
+               </Link>
+            </div>
          </div>
-      </div>
+      </section>
    );
 };

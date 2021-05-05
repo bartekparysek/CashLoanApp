@@ -46,7 +46,6 @@ export default function LoanParams() {
   return (
     <div className="loan-params">
       <React.Fragment>
-        <h1>Cash Loan Application</h1>
         <p>Please choose your loan parameters: </p>
       </React.Fragment>
 

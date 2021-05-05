@@ -11,6 +11,7 @@ export default function ClientInfo() {
   const [submitted, setSubmitted] = useState(false);
 
   const handleFirstNameChange = (event) => {
+    event.persist();
     setValues((values) => ({
       ...values,
       firstName: event.target.value
@@ -18,6 +19,7 @@ export default function ClientInfo() {
   };
 
   const handleLastNameChange = (event) => {
+    event.persist();
     setValues((values) => ({
       ...values,
       lastName: event.target.value
@@ -25,6 +27,7 @@ export default function ClientInfo() {
   };
 
   const handleEmailChange = (event) => {
+    event.persist();
     setValues((values) => ({
       ...values,
       email: event.target.value
@@ -32,6 +35,7 @@ export default function ClientInfo() {
   };
 
   const handleAddressChange = (event) => {
+    event.persist();
     setValues((values) => ({
       ...values,
       address: event.target.value
@@ -47,7 +51,6 @@ export default function ClientInfo() {
     <div className="client-info">
       <form className="ui form" onSubmit={handleSubmit}>
         <div className="field">
-          <label>First Name</label>
           <input
             onChange={handleFirstNameChange}
             type="text"
@@ -59,7 +62,6 @@ export default function ClientInfo() {
         </div>
 
         <div className="field">
-          <label>Last Name</label>
           <input
             onChange={handleLastNameChange}
             type="text"
@@ -71,7 +73,6 @@ export default function ClientInfo() {
         </div>
 
         <div className="field">
-          <label>E-mail</label>
           <input
             onChange={handleEmailChange}
             type="text"
@@ -84,7 +85,6 @@ export default function ClientInfo() {
         </div>
 
         <div className="field">
-          <label>Address</label>
           <input
             onChange={handleAddressChange}
             type="text"
@@ -92,12 +92,12 @@ export default function ClientInfo() {
             placeholder="Address"
             value={values.address}
           />
-          {submitted && !values.address && <span id="address-error">Please enter an address </span>}
+          {!values.address && submitted && <span id="address-error">Please enter an address </span>}
         </div>
       </form>
       <div>
-        <Link to="/finish">
-          <button onSubmit={handleSubmit}>Submit</button>
+        <Link to="/finish" >
+          <button onClick={handleSubmit} >Submit</button>
         </Link>
       </div>
 
