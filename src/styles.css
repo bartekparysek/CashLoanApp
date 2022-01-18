@@ -121,7 +121,7 @@ span {
 	white-space: pre-wrap;
 	padding: 1rem 1.5rem;
 }
-/*mobile */
+
 @media screen and (max-width: 425px) {
 	.field {
 		display: flex;
