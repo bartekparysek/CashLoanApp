@@ -1,11 +1,11 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import LoanParams from './Components/LoanParams';
-import ClientInfo from './Components/ClientInfo';
-import Invitation from './Components/Invitation';
-import Finish from './Components/Finish';
-import Header from './Components/Header';
+import LoanParams from './pages/LoanParams';
+import ClientInfo from './pages/ClientInfo';
+import Invitation from './pages/Invitation';
+import Finish from './pages/Finish';
+import Header from './Components/organisms/Header';
 import './styles.css';
 
 export default function App() {

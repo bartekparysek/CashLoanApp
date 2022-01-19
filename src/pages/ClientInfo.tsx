@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { ChangeEvent, FormEvent, useState } from 'react';
 import { Link } from 'react-router-dom';
+
+export type onInputChangeEvent = ChangeEvent & { target: HTMLInputElement };
 
 export default function ClientInfo() {
 	const [values, setValues] = useState({
@@ -10,7 +12,7 @@ export default function ClientInfo() {
 	});
 	const [submitted, setSubmitted] = useState(false);
 
-	const handleFirstNameChange = (event) => {
+	const handleFirstNameChange = (event: onInputChangeEvent) => {
 		event.persist();
 		setValues((values) => ({
 			...values,
@@ -18,7 +20,7 @@ export default function ClientInfo() {
 		}));
 	};
 
-	const handleLastNameChange = (event) => {
+	const handleLastNameChange = (event: onInputChangeEvent) => {
 		event.persist();
 		setValues((values) => ({
 			...values,
@@ -26,7 +28,7 @@ export default function ClientInfo() {
 		}));
 	};
 
-	const handleEmailChange = (event) => {
+	const handleEmailChange = (event: onInputChangeEvent) => {
 		event.persist();
 		setValues((values) => ({
 			...values,
@@ -34,7 +36,7 @@ export default function ClientInfo() {
 		}));
 	};
 
-	const handleAddressChange = (event) => {
+	const handleAddressChange = (event: onInputChangeEvent) => {
 		event.persist();
 		setValues((values) => ({
 			...values,
@@ -42,7 +44,7 @@ export default function ClientInfo() {
 		}));
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = (e: FormEvent) => {
 		e.preventDefault();
 		setSubmitted(true);
 	};
