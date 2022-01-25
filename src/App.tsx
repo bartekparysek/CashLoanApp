@@ -6,7 +6,7 @@ import ClientInfo from './pages/ClientInfo';
 import Invitation from './pages/Invitation';
 import Finish from './pages/Finish';
 import Header from './Components/organisms/Header';
-import './styles.css';
+import './styles/output.css';
 
 export default function App() {
 	return (
