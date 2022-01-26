@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+	body {
+		background-color: rgba(78, 124, 235, 0.19);
+	}
+	input[type='range']::-webkit-slider-thumb {
+		width: 20px;
+		-webkit-appearance: none;
+		appearance: none;
+		height: 20px;
+		cursor: pointer;
+		background: #fff;
+		box-shadow: -405px 0 0 400px rgba(68, 104, 192, 0.71);
+		border-radius: 50%;
+	}
+}
