@@ -1,14 +1,11 @@
 module.exports = {
-  content: ["src/**/*.{js,jsx,ts,tsx}"],
+  mode: 'jit',
+  purge: [
+    './src/**/*.{html,js,tsx,ts}',
+    '.src/Components/**/*.{tsx,ts}',
+    '.src/pages/**'
+  ],
   theme: {
-    colors: {
-      'black': '#000',
-      'white': '#fff',
-      'blue': '#4468C0',
-      'lightBlue': '#4E7CEB',
-      'mainGrey': '#111A30'
-    },
-    fontFamily: {},
     extend: {},
   },
   plugins: [],
