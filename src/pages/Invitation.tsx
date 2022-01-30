@@ -1,18 +1,28 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import NavButton from '../Components/atoms/NavButton';
+import money from '../assets/money.webp';
 
-export default function Invitation() {
-  return (
+const Invitation = () => {
+	return (
+		<div className='flex justify-between bg-white rounded'>
+			<div className='flex flex-col p-10 justify-around'>
+				<div className='leading-9 flex flex-col content-between'>
+					<h2 className='font-bold text-2xl mb-5'>Cash Loan (APR 7,33%)</h2>
+					<ul className='text-black opacity-30 font-bold list-disc list-inside'>
+						<li>borrow up to 108 000 PLN</li>
+						<li>interest only 7.2%</li>
+						<li>free lending commision </li>
+						<li>free early repayment</li>
+					</ul>
+				</div>
 
-    <div className="invitation" >
-      <div className="invitation-details">
-        <h1>Apply for a new Loan</h1>
-        <p>Welcome to cash loan application!</p>
-        <p>Please take next step and choose your loan parameters</p>
-      </div>
-      <Link to="/loanparams">
-        <button className="ui button">Next</button>
-      </Link>
-    </div>
-  );
-}
+				<NavButton path='/loanparams' nextPage='Loan Parameters' />
+			</div>
+			<img
+				className='w-auto h-[60vh] rounded-r-sm'
+				alt='money'
+				src={money}
+			></img>
+		</div>
+	);
+};
+export default Invitation;
