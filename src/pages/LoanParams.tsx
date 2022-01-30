@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { onInputChangeEvent } from '../Components/atoms/Input';
+import React, { useState, useEffect } from 'react';
+import NavButton from '../Components/atoms/NavButton';
+import { onInputChangeEvent } from '../Components/atoms/TextInput';
+import LoanTerms from '../Components/molecules/LoanTerms';
+import Parameters from '../Components/organisms/Parameters';
 
-type nullNumberUnion = null | number;
+export type nullNumberUnion = null | number;
 
-interface loanParams {
+export interface loanParams {
 	amount: number;
 	period: number;
 	installment: nullNumberUnion;
@@ -24,6 +26,9 @@ export default function LoanParams() {
 		apr: null,
 		totalPayOff: null,
 	});
+	useEffect(() => {
+		calculateLoanParams();
+	}, []);
 
 	const calculateLoanParams = () => {
 		const loanPeriodDays = Math.round(loan.period * 30.41666);
@@ -34,7 +39,7 @@ export default function LoanParams() {
 				loanPeriodDays
 			).toFixed(2)
 		);
-		const totalPayOff = loan.amount + totalInterest;
+		const totalPayOff = parseFloat((loan.amount + totalInterest).toFixed(2));
 		const installment = parseFloat((totalPayOff / loan.period).toFixed(2));
 		const apr = parseFloat(
 			(
@@ -67,81 +72,17 @@ export default function LoanParams() {
 	};
 
 	return (
-		<div className='loan-params'>
-			<React.Fragment>
-				<p>Please choose your loan parameters: </p>
-			</React.Fragment>
-
-			<form className='ui form'>
-				<div className='fields'>
-					<div className='field'>
-						<input
-							onChange={handleAmountChange}
-							onMouseUp={calculateLoanParams}
-							onTouchEnd={calculateLoanParams}
-							type='range'
-							min='1000'
-							max='108000'
-							name='loan-amount'
-							step='100'
-							value={loan.amount}
-							placeholder='Amount between 1000 PLN and 108 000 PLN'
-						></input>
-						<input
-							onChange={handleAmountChange}
-							onBlur={calculateLoanParams}
-							type='number'
-							min='1000'
-							max='108000'
-							name='loan-amount'
-							value={loan.amount}
-							placeholder='Amount between 1000 PLN and 108 000 PLN'
-						></input>
-					</div>
-					<div className='field'>
-						<input
-							onChange={handlePeriodChange}
-							onMouseUp={calculateLoanParams}
-							onTouchEnd={calculateLoanParams}
-							type='range'
-							min='6'
-							max='120'
-							step='1'
-							name='loan-period'
-							value={loan.period}
-							placeholder='Period between 6 and 120 months'
-						></input>
-						<input
-							onChange={handlePeriodChange}
-							onBlur={calculateLoanParams}
-							type='number'
-							min='6'
-							max='120'
-							name='loan-period'
-							value={loan.period}
-							placeholder='Period between 6 and 120 months'
-						></input>
-					</div>
-				</div>
-
-				<h3> Your Loan Terms : </h3>
-				<div className='loan-terms'>
-					<ul>
-						<li>Amount: {loan.amount} PLN</li>
-						<li>Period: {loan.period} months </li>
-						<li>Interest Rate: {loan.interestRate}% </li>
-						<li>Interest: {loan.interest} PLN</li>
-						<li>Installment: {loan.installment} PLN </li>
-						<li>Annual Percantage Rate: {loan.apr} % </li>
-						<li>Total Pay Off Amount: {loan.totalPayOff} PLN </li>
-					</ul>
-				</div>
+		<div className='bg-white rounded min-h-[60vh] min-w-[70vw] px-10'>
+			<form>
+				<Parameters
+					handleAmountChange={handleAmountChange}
+					handlePeriodChange={handlePeriodChange}
+					calculateLoanParams={calculateLoanParams}
+					loan={loan}
+				/>
 			</form>
-			<div>
-				<Link to='/clientinfo'>
-					<button className='ui button'>Next</button>
-				</Link>
-			</div>
+			<LoanTerms loan={loan} />
+			<NavButton path='/clientinfo' nextPage='Client information' />
 		</div>
 	);
 }

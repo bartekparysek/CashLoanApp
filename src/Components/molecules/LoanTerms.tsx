@@ -7,11 +7,11 @@ interface TermsProps {
 
 const LoanTerms = ({ loan }: TermsProps): JSX.Element => {
 	return (
-		<div>
+		<div className='mb-3'>
 			<h2 className='font-bold mx-4'> Your Loan Terms</h2>
 			<hr className='mx-4 text-gray' />
 			<div className='p-4'>
-				<ul className='grid gap-6 grid-flow-col grid-rows-3 '>
+				<ul className='grid gap-6 grid-cols-[1fr_minmax(0,_1fr)_1fr] grid-flow-col grid-rows-3 '>
 					<TermItem value={loan.amount} description='Amount' smallValue='PLN' />
 					<TermItem
 						value={loan.period}
