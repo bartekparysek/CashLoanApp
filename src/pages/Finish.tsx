@@ -1,20 +1,17 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { MdCheckCircle } from 'react-icons/md';
-
+import NavButton from '../Components/atoms/NavButton';
 
 export default function Finish() {
-   return (
-      <section>
-         <div className="finish">
-            <div className="finish-message">
-               <MdCheckCircle />
-               <h3>Your applicacation has been submited</h3>
-               <Link to='/'>
-                  <button> Start Again</button>
-               </Link>
-            </div>
-         </div>
-      </section>
-   );
-};
+	return (
+		<section className='bg-white rounded min-h-[60vh] p-5 min-w-[calc(50vw-2rem)] flex justify-center items-center'>
+			<div className='flex flex-col items-center'>
+				<MdCheckCircle className='text-[#27ae60] w-16 h-16' />
+				<h3 className='text-black opacity-30 font-bold my-4'>
+					Your applicacation has been submited succesfully!
+				</h3>
+				<NavButton path='/' nextPage='Start again' />
+			</div>
+		</section>
+	);
+}

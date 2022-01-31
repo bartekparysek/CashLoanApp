@@ -1,5 +1,7 @@
 import React, { ChangeEvent, FormEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import NavButton from '../Components/atoms/NavButton';
+import InformationInputs from '../Components/molecules/InformationInputs';
+import form from '../assets/form.webp';
 
 export type onInputChangeEvent = ChangeEvent & { target: HTMLInputElement };
 
@@ -50,66 +52,27 @@ export default function ClientInfo() {
 	};
 
 	return (
-		<div className='client-info'>
-			<form className='ui form' onSubmit={handleSubmit}>
-				<div className='field'>
-					<input
-						onChange={handleFirstNameChange}
-						type='text'
-						name='first-name'
-						placeholder='First Name'
-						value={values.firstName}
+		<div className='bg-white rounded min-h-[60vh] min-w-[70vw]  flex justify-between'>
+			<div className='p-10'>
+				<h2 className='font-bold text-2xl'>Your personal information</h2>
+				<form className='' onSubmit={handleSubmit}>
+					<InformationInputs
+						handleFirstNameChange={handleFirstNameChange}
+						handleLastNameChange={handleLastNameChange}
+						handleEmailChange={handleEmailChange}
+						handleAddressChange={handleAddressChange}
+						values={values}
+						submitted={submitted}
 					/>
-					{submitted && !values.firstName && (
-						<span id='first-name-error'>Please enter your first name</span>
-					)}
-				</div>
+				</form>
 
-				<div className='field'>
-					<input
-						onChange={handleLastNameChange}
-						type='text'
-						name='first-name'
-						placeholder='Last Name'
-						value={values.lastName}
-					/>
-					{submitted && !values.lastName && (
-						<span id='last-name-error'>Please enter your last name</span>
-					)}
-				</div>
-
-				<div className='field'>
-					<input
-						onChange={handleEmailChange}
-						type='text'
-						name='first-name'
-						placeholder='E-mail'
-						value={values.email}
-						pattern='(\w\.?)+@[\w\.-]+\.\w{2,4}'
-					/>
-					{submitted && !values.email && (
-						<span id='email-error'>Please enter an email address</span>
-					)}
-				</div>
-
-				<div className='field'>
-					<input
-						onChange={handleAddressChange}
-						type='text'
-						name='first-name'
-						placeholder='Address'
-						value={values.address}
-					/>
-					{!values.address && submitted && (
-						<span id='address-error'>Please enter an address </span>
-					)}
-				</div>
-			</form>
-			<div>
-				<Link to='/finish'>
-					<button onClick={handleSubmit}>Submit</button>
-				</Link>
+				<NavButton path='/finish' nextPage='Submit' onClick={handleSubmit} />
 			</div>
+			<img
+				className='w-auto max-h-[60vh] rounded-r-sm'
+				alt='money'
+				src={form}
+			></img>
 		</div>
 	);
 }
