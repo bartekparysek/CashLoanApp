@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import routes from '../../routes';
 import { MdArrowForwardIos } from 'react-icons/md';
+import routes from '../../routes';
 
 const BreadCrumbs = () => {
 	return (

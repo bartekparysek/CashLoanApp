@@ -2,35 +2,41 @@ import ClientInfo from './pages/ClientInfo';
 import Finish from './pages/Finish';
 import Invitation from './pages/Invitation';
 import LoanParams from './pages/LoanParams';
+import type { RouteProps } from 'react-router-dom';
 
-export interface Route {
-	path: string;
+export const routesConfig = {
+	home: (): string => '/',
+	loanParams: (): string => '/loanparams',
+	clientInfo: (): string => '/clientinfo',
+	finish: (): string => '/finish',
+};
+
+export type AppRouteProps = {
 	name: string;
-	exact: boolean;
-	component: any;
-	props?: any;
-}
-const routes: Route[] = [
+	path: string;
+} & RouteProps;
+
+const routes: AppRouteProps[] = [
 	{
-		path: '/',
+		path: routesConfig.home(),
 		name: 'Home Page',
 		component: Invitation,
 		exact: true,
 	},
 	{
-		path: '/loanparams',
+		path: routesConfig.loanParams(),
 		name: 'Loan Parameters',
 		component: LoanParams,
 		exact: true,
 	},
 	{
-		path: '/clientinfo',
+		path: routesConfig.clientInfo(),
 		name: 'Client Information',
 		component: ClientInfo,
 		exact: true,
 	},
 	{
-		path: '/finish',
+		path: routesConfig.finish(),
 		name: 'Summary',
 		component: Finish,
 		exact: true,
