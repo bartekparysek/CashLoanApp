@@ -1,5 +1,5 @@
-import TermItem from '../atoms/TermItem';
-import { loanParams } from '../organisms/LoanParams';
+import { TermItem } from '@/components/atoms/TermItem';
+import { loanParams } from '@/contexts/LoanAppContext';
 
 interface TermsProps {
   loan: loanParams;

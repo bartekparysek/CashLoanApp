@@ -1,5 +1,5 @@
-import TextInput from '../atoms/TextInput';
-import { onInputChangeEvent } from '../organisms/ClientInfo';
+import TextInput from '../atoms/TextInput/TextInput';
+import { onInputChangeEvent } from '@/types/ts-utils';
 
 interface InputsProps {
   handleFirstNameChange: (event: onInputChangeEvent) => void;

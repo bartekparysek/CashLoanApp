@@ -1,5 +1,5 @@
 import { MdCheckCircle } from 'react-icons/md';
-import NavButton from '../atoms/NavButton';
+import NavButton from '../../atoms/NavButton';
 
 export default function Finish() {
   return (

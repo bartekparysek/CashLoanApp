@@ -1,24 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
-import LoanTerms from '../molecules/LoanTerms';
-import NavButton from '../atoms/NavButton';
-import Parameters from '../molecules/Parameters';
-import { onInputChangeEvent } from '../atoms/TextInput';
-import { useInfo } from '../context/LoanAppContext';
+import LoanTerms from '../../molecules/LoanTerms/LoanTerms';
+import NavButton from '../../atoms/NavButton';
+import Parameters from '../../molecules/Parameters/Parameters';
+import { onInputChangeEvent } from '@/types/ts-utils';
+import { useInfo } from '@/contexts/LoanAppContext';
 
-export type nullNumberUnion = null | number;
-
-export interface loanParams {
-  amount: number;
-  period: number;
-  installment: nullNumberUnion;
-  interestRate: number;
-  interest: nullNumberUnion;
-  apr: nullNumberUnion;
-  totalPayOff: nullNumberUnion;
-}
-
-export default function LoanParams() {
+export const LoanParams = () => {
   const { loan, setLoan } = useInfo();
   useEffect(() => {
     calculateLoanParams();
@@ -80,4 +68,4 @@ export default function LoanParams() {
       <NavButton path="/clientinfo" nextPage="Client information" />
     </div>
   );
-}
+};

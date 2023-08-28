@@ -1,3 +1,4 @@
+import { NextPageContext } from 'next';
 type MyErrorProps = {
   statusCode: number;
   hasGetInitialPropsRun: boolean;
@@ -14,7 +15,7 @@ export default function MyError({ statusCode }: MyErrorProps) {
   );
 }
 
-MyError.getInitialProps = async ({ res, err }) => {
+MyError.getInitialProps = async ({ res, err }: NextPageContext) => {
   const statusCode = res ? res.statusCode : err ? err.statusCode : 404;
   return { statusCode };
 };

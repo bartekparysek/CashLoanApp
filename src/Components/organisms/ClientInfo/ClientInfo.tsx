@@ -1,11 +1,11 @@
-import React, { ChangeEvent, FormEvent, useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 
-import InformationInputs from '../molecules/InformationInputs';
-import NavButton from '../atoms/NavButton';
-import form from 'assets/form.webp';
-import { useInfo } from '../../contexts/LoanAppContext';
-
-export type onInputChangeEvent = ChangeEvent & { target: HTMLInputElement };
+import Image from 'next/image';
+import InformationInputs from '../../molecules/InformationInputs';
+import NavButton from '../../atoms/NavButton';
+import form from 'public/images/form.webp';
+import { onInputChangeEvent } from '@/types/ts-utils';
+import { useInfo } from '../../../contexts/LoanAppContext';
 
 export default function ClientInfo() {
   const [submitted, setSubmitted] = useState(false);
@@ -69,14 +69,13 @@ export default function ClientInfo() {
             submitted={submitted}
           />
         </form>
-
         <NavButton path="/finish" nextPage="Submit" onClick={handleSubmit} />
       </div>
-      {/* <img
-				className='w-auto max-h-[60vh] rounded-r-sm'
-				alt='money'
-				src={form}
-			></img> */}
+      <Image
+        className="w-auto max-h-[60vh] rounded-r-sm"
+        alt="money"
+        src={form}
+      />
     </div>
   );
 }

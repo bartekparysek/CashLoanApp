@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import NavButton from '@/components/atoms/NavButton';
 import money from '@/public/images/money.webp';
 
@@ -17,11 +18,11 @@ export const Home = () => {
 
         <NavButton path="/loanparams" nextPage="Loan Parameters" />
       </div>
-      <img
+      <Image
         className="w-auto h-[60vh] rounded-r-sm"
         alt="money"
         src={money}
-      ></img>
+      ></Image>
     </div>
   );
 };

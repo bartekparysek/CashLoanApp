@@ -1,8 +1,8 @@
-import ParamsInputs from './ParamsInputs';
-import RangeInput from '../atoms/RangeInput';
-import ValueInput from '../atoms/ValueInput';
-import { loanParams } from '../organisms/LoanParams';
-import { onInputChangeEvent } from '../atoms/TextInput';
+import { ParamsInput } from '../../atoms/ParamsInput';
+import { Range } from '../../atoms/Range';
+import { ValueInput } from '../../atoms/ValueInput';
+import { loanParams } from '@/contexts/LoanAppContext';
+import { onInputChangeEvent } from '@/types/ts-utils';
 
 interface ParemetersProps {
   handleAmountChange: (event: onInputChangeEvent) => void;
@@ -27,8 +27,8 @@ const Parameters = ({
   const periodLabel = 'Period';
   return (
     <div className="p-5">
-      <ParamsInputs>
-        <RangeInput
+      <ParamsInput>
+        <Range
           onChange={handleAmountChange}
           calculateLoanParams={calculateLoanParams}
           value={loan.amount}
@@ -45,9 +45,9 @@ const Parameters = ({
           step={amountStep}
           label={amountLabel}
         />
-      </ParamsInputs>
-      <ParamsInputs>
-        <RangeInput
+      </ParamsInput>
+      <ParamsInput>
+        <Range
           onChange={handlePeriodChange}
           calculateLoanParams={calculateLoanParams}
           value={loan.period}
@@ -64,7 +64,7 @@ const Parameters = ({
           step={periodStep}
           label={periodLabel}
         />
-      </ParamsInputs>
+      </ParamsInput>
     </div>
   );
 };

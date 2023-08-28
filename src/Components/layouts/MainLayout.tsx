@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren } from 'react';
 
-import BreadCrumbs from '../atoms/BreadCrumbs';
-import Header from '../molecules/Header';
+import BreadCrumbs from '../atoms/BreadCrumbs/BreadCrumbs';
+import Header from '../molecules/Header/Header';
 
 export const MainLayout: FC<PropsWithChildren> = ({ children }) => {
   return (

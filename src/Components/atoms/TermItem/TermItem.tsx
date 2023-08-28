@@ -1,15 +1,6 @@
-import { nullNumberUnion } from '../organisms/LoanParams';
-interface ItemProps {
-  value: nullNumberUnion;
-  description: string;
-  smallValue: string;
-}
+import { TermItemProps } from '.';
 
-const TermItem = ({
-  value,
-  description,
-  smallValue,
-}: ItemProps): JSX.Element => {
+export const TermItem = ({ value, description, smallValue }: TermItemProps) => {
   return (
     <li className="flex flex-col items-center last:col-start-3 last:row-start-2">
       <p className="text-black opacity-40 font-bold mb-2 ">{description}</p>
@@ -20,5 +11,3 @@ const TermItem = ({
     </li>
   );
 };
-
-export default TermItem;
