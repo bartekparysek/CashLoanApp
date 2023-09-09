@@ -1,15 +1,20 @@
 module.exports = {
-  purge: [
+  content: [
     './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
     colors: {
-      blue: 'rgba(68, 104, 192, 0.71)',
+      yippie: '#F8F8A0',
+      green: '#5FD157',
+      blue: '#02ACE5',
+      yellow: '#FCDF25',
       white: '#ffff',
-      gray: 'rgba(17, 26, 48, 0.15)',
-      blue1: 'rgba(68, 104, 192, 1)',
+      red: '#FF8049',
+      gray: '#e7e7e7',
+      shady: '#4c4c4c',
+      black: '#000',
     },
     minHeight: {
       '3/4': 'calc(75vh - 2rem)',
