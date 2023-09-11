@@ -4,7 +4,7 @@
 
 @layer base {
 	body {
-		background-color: rgba(78, 124, 235, 0.19);
+		background-color: #d3d3d3;
 	}
 	input[type='range']::-webkit-slider-thumb {
 		width: 20px;

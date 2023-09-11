@@ -15,6 +15,7 @@ module.exports = {
       gray: '#e7e7e7',
       shady: '#4c4c4c',
       black: '#000',
+      pinball: '#d3d3d3',
     },
     minHeight: {
       '3/4': 'calc(75vh - 2rem)',
