@@ -1,7 +1,7 @@
 import type { StorybookConfig } from '@storybook/nextjs';
 const path = require('path');
 const config: StorybookConfig = {
-  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
+  stories: ['../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -14,12 +14,21 @@ const config: StorybookConfig = {
       },
     },
   ],
+  staticDirs: ['../public'],
   webpackFinal: async (config, { configType }) => {
     if (config.resolve) {
       config.resolve.alias = {
         ...config.resolve.alias,
         '@': path.resolve(__dirname, '../src'),
       };
+      /**
+       * Fixes font import with /
+       * @see https://github.com/storybookjs/storybook/issues/12844#issuecomment-867544160
+       */
+      config.resolve.roots = [
+        path.resolve(__dirname, '../public'),
+        'node_modules',
+      ];
     }
 
     return config;

@@ -1,4 +1,5 @@
-import '../src/styles/globals.css';
+import '../src/styles/tailwind.css';
+import '../src/styles/fonts.css';
 
 import type { Preview } from '@storybook/react';
 import { withThemeByClassName } from '@storybook/addon-styling';

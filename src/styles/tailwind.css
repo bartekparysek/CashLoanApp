@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-inter: 'Inter';
+  --font-libre: 'LibreBaskerville';
+}
+
 @layer base {
+	html {
+		font-family: Inter,system-ui, sans-serif;
+	}
 	body {
 		background-color: #d3d3d3;
 	}
