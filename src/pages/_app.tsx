@@ -1,4 +1,4 @@
-import '@/styles/globals.css';
+import '../styles/tailwind.css';
 
 import { AppContext, AppProps } from 'next/app';
 
