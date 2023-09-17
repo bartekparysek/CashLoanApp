@@ -13,7 +13,7 @@
 		font-family: Inter,system-ui, sans-serif;
 	}
 	body {
-		background-color: #d3d3d3;
+		background-color: #f7f7f7;
 	}
 	input[type='range']::-webkit-slider-thumb {
 		width: 20px;

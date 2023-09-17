@@ -6,6 +6,7 @@ module.exports = {
     './src/components/**/*.{js,ts,jsx,tsx,mdx}',
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
+  darkMode: 'class',
   theme: {
     colors: {
       yippie: '#F8F8A0',
@@ -14,10 +15,16 @@ module.exports = {
       yellow: '#FCDF25',
       white: '#ffff',
       red: '#FF8049',
-      gray: '#e7e7e7',
+      gray: {
+        '100': '#1C1C1C',
+        '200': '#585757',
+        '300': '#969696',
+        '400': '#E8E8E8',
+      },
       shady: '#4c4c4c',
       black: '#000',
       pinball: '#d3d3d3',
+      lynxWhite: '#f7f7f7',
       neutral: {
         '50': '#fafafa',
         '100': '#f5f5f5',

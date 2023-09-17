@@ -1,28 +1,34 @@
+import { Button } from '@/components/atoms/Button';
 import Image from 'next/image';
-import NavButton from '@/components/atoms/NavButton';
 import money from '/public/images/money.webp';
 
 export const Home = () => {
   return (
-    <div className="flex justify-between bg-white rounded ">
-      <div className="flex flex-col p-10 justify-around">
-        <div className="leading-9 flex flex-col content-between">
-          <h2 className="font-bold text-2xl mb-5">Cash Loan (APR 7,33%)</h2>
-          <ul className="text-black opacity-30 font-bold list-disc list-inside">
-            <li>borrow up to 108 000 PLN</li>
-            <li>interest only 7.2%</li>
-            <li>free lending commision </li>
-            <li>free early repayment</li>
-          </ul>
-        </div>
-
-        <NavButton path="/loanparams" nextPage="Loan Parameters" />
-      </div>
+    <section className="w-full gap-5  bg-opacity-60 p-5 flex items-center flex-col lg:flex-row justify-between bg-white rounded border border-neutral-200 border-solid ">
       <Image
-        className="w-auto h-[60vh] rounded-r-sm"
+        width={500}
+        height={700}
+        className="mb-5 w-full rounded lg:mb-0 "
         alt="money"
         src={money}
-      ></Image>
-    </div>
+      />
+
+      <div className="flex flex-col justify-around w-full lg:items-center ">
+        <div className="flex flex-col mb-5">
+          <h2 className="text-4xl mb-5 text-gray-100">
+            Cash Loan <strong>(APR 7,33%)</strong>
+          </h2>
+          <p className="text-gray-300 text-base">
+            Borrow up to <strong>108 000 PLN</strong> interest only{' '}
+            <strong>7.2%</strong> <br />
+            Free lending commision and early repayment
+          </p>
+        </div>
+
+        <Button color="yippie" className="lg:justify-self-start font-medium">
+          Fill Loan Application
+        </Button>
+      </div>
+    </section>
   );
 };
