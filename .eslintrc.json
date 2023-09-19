@@ -1,6 +1,62 @@
 {
+  "plugins": ["jest"],
   "extends": [
-    "next/core-web-vitals",
+    "airbnb",
+    "airbnb-typescript",
+    "prettier",
+    "plugin:react-hooks/recommended",
+    "plugin:jest/recommended",
     "plugin:storybook/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "jest": true,
+    "jest/globals": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2021,
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["@"]
+      }
+    }
+  },
+  "ignorePatterns": ["components/common/ElementsMosaic/vi"],
+  "rules": {
+    "import/prefer-default-export": 0,
+    "react/jsx-filename-extension": [
+      1,
+      { "extensions": [".js", ".jsx", ".tsx"] }
+    ],
+    "react/jsx-fragments": "off",
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "react/require-default-props": 0,
+    "react/jsx-uses-react": 0, // Not true since React v17
+    "react/react-in-jsx-scope": 0, // Not true since React v17
+    "react/jsx-props-no-spreading": 0, // Useful to passtrough props - HOC
+    "import/no-extraneous-dependencies": 0, // For Storybook and Tailwindcss (devDeps),
+    "react/button-has-type": 0, // Doesn't make sense in Typescript
+    "@typescript-eslint/lines-between-class-members": 0, // Pain in the neck
+    "no-void": 0, // For Promises
+    "jsx-a11y/anchor-is-valid": 0,
+    "jsx-a11y/click-events-have-key-events": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 0,
+    "no-underscore-dangle": 0,
+    "jsx-a11y/no-autofocus": 0,
+    "import/extensions": 0,
+    "react/function-component-definition": 0
+  },
+  "overrides": [
+    {
+      // Turn off "react/prop-types" rule for TypeScript files
+      "files": ["**/*.tsx", "**/*.ts"],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
   ]
 }
