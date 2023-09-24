@@ -1,6 +1,7 @@
 import { Button } from '@/components/atoms/Button';
 import Image from 'next/image';
 import money from '/public/images/money.webp';
+import { routes } from '@/routes';
 
 export const Home = () => {
   return (
@@ -25,7 +26,12 @@ export const Home = () => {
           </p>
         </div>
 
-        <Button color="yippie" className="lg:justify-self-start font-medium">
+        <Button
+          color="yippie"
+          className="lg:justify-self-start font-medium"
+          as="a"
+          href={routes.loan()}
+        >
           Fill Loan Application
         </Button>
       </div>

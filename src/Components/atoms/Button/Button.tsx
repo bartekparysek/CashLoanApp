@@ -28,6 +28,7 @@ export const Button: <E extends ElementType = 'button'>(
     loading,
     disabled,
     className,
+    ...rest
   } = props;
   return (
     <Element
@@ -54,6 +55,7 @@ export const Button: <E extends ElementType = 'button'>(
         className
       )}
       disabled={loading || disabled}
+      {...rest}
     >
       <span className={cn('transition-opacity', { 'opacity-0': loading })}>
         {children}

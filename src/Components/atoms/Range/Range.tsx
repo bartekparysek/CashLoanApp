@@ -1,29 +1,20 @@
-import { FC } from 'react';
-import { ValueInputProps } from '../ValueInput';
+import { forwardRef } from 'react';
 
-export const Range: FC<ValueInputProps> = ({
-  onChange,
-  calculateLoanParams,
-  value,
-  placeholder,
-  minMax,
-  step,
-}) => {
-  return (
+import { RangeInputProps } from './Range.types';
+
+export const Range = forwardRef<HTMLInputElement, RangeInputProps>(
+  ({ placeholder, minMax, step, ...rest }, ref) => (
     <div className="mr-5 w-64 m-3">
       <input
-        className="rounded-lg overflow-hidden appearance-none bg-gray h-4 w-full"
-        onChange={onChange}
-        onMouseUp={calculateLoanParams}
-        onTouchEnd={calculateLoanParams}
+        ref={ref}
+        className="rounded-lg overflow-hidden appearance-none bg-gray-400 h-4 w-full"
         type="range"
         min={minMax.min}
         max={minMax.max}
-        name="loanRange"
         step={step}
-        value={value}
         placeholder={placeholder}
-      ></input>
+        {...rest}
+      />
     </div>
-  );
-};
+  )
+);
