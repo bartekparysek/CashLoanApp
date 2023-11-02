@@ -13,16 +13,18 @@ import {
 
 import type React from 'react';
 import { debounce } from 'lodash';
-import { nullNumberUnion } from '@/types/ts-utils';
+import { useRouter } from 'next/router';
+import { NullNumberUnion } from '@/types/ts-utils';
+import { routes } from '@/routes';
 
 export type LoanParams = {
   amount: number;
   period: number;
-  installment: nullNumberUnion;
+  installment: NullNumberUnion;
   interestRate: number;
-  interest: nullNumberUnion;
-  apr: nullNumberUnion;
-  totalPayOff: nullNumberUnion;
+  interest: NullNumberUnion;
+  apr: NullNumberUnion;
+  totalPayOff: NullNumberUnion;
 };
 
 export type ClientInfo = {
@@ -51,18 +53,24 @@ const ClientInfoDefaultValues = {
 
 export type LoanContextValues = {
   loan: LoanParams;
-  setLoan: Dispatch<SetStateAction<LoanParams>>;
   clientInfo: ClientInfo;
+  step: number;
+  setLoan: Dispatch<SetStateAction<LoanParams>>;
   setClientInfo: Dispatch<SetStateAction<ClientInfo>>;
   calculateLoanParams: () => void;
+  setNextStep: () => void;
+  setPrevStep: () => void;
 };
 
 export const LoanAppContext = createContext<LoanContextValues>({
   loan: LoanDefaultValues,
-  setLoan: () => {},
   clientInfo: ClientInfoDefaultValues,
+  step: 1,
+  setLoan: () => {},
   setClientInfo: () => {},
   calculateLoanParams: () => {},
+  setNextStep: () => {},
+  setPrevStep: () => {},
 });
 
 export const LoanApplicationProvider: FC<PropsWithChildren> = ({
@@ -72,7 +80,8 @@ export const LoanApplicationProvider: FC<PropsWithChildren> = ({
   const [clientInfo, setClientInfo] = useState<ClientInfo>(
     ClientInfoDefaultValues
   );
-
+  const [step, setStep] = useState<number>(1);
+  const router = useRouter();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const calculateLoanParams = useCallback(
     debounce(() => {
@@ -104,15 +113,37 @@ export const LoanApplicationProvider: FC<PropsWithChildren> = ({
     [loan]
   );
 
-  const value = useMemo(
-    () => ({ loan, setLoan, clientInfo, setClientInfo, calculateLoanParams }),
-    [calculateLoanParams, clientInfo, loan]
+  const setNextStep = useCallback(() => {
+    setStep((prev) => prev + 1);
+  }, []);
+
+  const setPrevStep = useCallback(() => {
+    if (step === 1) {
+      void router.push(routes.home());
+    } else {
+      setStep((prev) => prev - 1);
+    }
+  }, [step]);
+
+  const value: LoanContextValues = useMemo(
+    () => ({
+      loan,
+      clientInfo,
+      step,
+      setClientInfo,
+      setLoan,
+      calculateLoanParams,
+      setNextStep,
+      setPrevStep,
+    }),
+    [calculateLoanParams, clientInfo, loan, setNextStep, setPrevStep, step]
   );
 
   useEffect(() => {
     calculateLoanParams();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <LoanAppContext.Provider value={value}>{children}</LoanAppContext.Provider>
   );

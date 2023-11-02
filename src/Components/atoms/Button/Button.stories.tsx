@@ -1,5 +1,5 @@
-import { ButtonColors, ButtonSizes } from '.';
 import type { Meta, StoryObj } from '@storybook/react';
+import { ButtonColors, ButtonSizes } from '.';
 
 import { Button } from './Button';
 

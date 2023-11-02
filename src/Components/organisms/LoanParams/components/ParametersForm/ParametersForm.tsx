@@ -1,11 +1,11 @@
 import { useForm } from 'react-hook-form';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { ParamsInput } from '@/components/atoms/ParamsInput';
 import { Range } from '@/components/atoms/Range';
 import { ValueInput } from '@/components/atoms/ValueInput';
 import { content } from '@/config';
 import { useLoanApplication } from '@/contexts/LoanAppContext';
-import { onInputChangeEvent } from '@/types/ts-utils';
+import { OnInputChangeEvent } from '@/types/ts-utils';
 
 export const ParametersForm = () => {
   const { loan, setLoan, calculateLoanParams } = useLoanApplication();
@@ -15,7 +15,6 @@ export const ParametersForm = () => {
   }>({
     defaultValues: { amount: loan.amount, period: loan.period },
   });
-  const [isDragging, setIsDragging] = useState(false);
 
   const {
     amountLabel,
@@ -30,22 +29,18 @@ export const ParametersForm = () => {
 
   const values = watch();
 
-  const handleAmountChange = (e: onInputChangeEvent) => {
+  const handleAmountChange = (e: OnInputChangeEvent) => {
     if (e.target.value === '') return;
     setValue('amount', parseFloat(e.target.value));
   };
 
-  const handlePeriodChange = (e: onInputChangeEvent) => {
+  const handlePeriodChange = (e: OnInputChangeEvent) => {
     if (e.target.value === '') return;
     setValue('period', parseFloat(e.target.value));
   };
 
-  const handleInputChange = () => {
-    setIsDragging(true);
-  };
-
   const handleMouseUp = () => {
-    setIsDragging(false);
+    calculateLoanParams();
   };
 
   useEffect(() => {
@@ -65,21 +60,14 @@ export const ParametersForm = () => {
     return () => {
       subscription.unsubscribe();
     };
-  }, [isDragging, setLoan, watch]);
-
-  useEffect(() => {
-    if (!isDragging) {
-      calculateLoanParams();
-    }
-  }, [calculateLoanParams, isDragging]);
+  }, [setLoan, watch]);
 
   return (
     <form>
-      <div className="p-5">
-        <ParamsInput>
+      <div className="w-full">
+        <ParamsInput label={amountLabel} name="amount">
           <Range
             {...register('amount')}
-            onInput={handleInputChange}
             onMouseUp={handleMouseUp}
             placeholder={amountPlaceholder}
             minMax={amountMinMax}
@@ -92,13 +80,11 @@ export const ParametersForm = () => {
             placeholder={amountPlaceholder}
             minMax={amountMinMax}
             step={amountStep}
-            label={amountLabel}
           />
         </ParamsInput>
-        <ParamsInput>
+        <ParamsInput label={periodLabel} name="period">
           <Range
             {...register('period')}
-            onInput={handleInputChange}
             onMouseUp={handleMouseUp}
             placeholder={periodPlaceholder}
             minMax={periodMinMax}
@@ -111,7 +97,6 @@ export const ParametersForm = () => {
             placeholder={periodPlaceholder}
             minMax={periodMinMax}
             step={periodStep}
-            label={periodLabel}
           />
         </ParamsInput>
       </div>

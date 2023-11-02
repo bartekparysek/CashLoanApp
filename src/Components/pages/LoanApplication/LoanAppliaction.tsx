@@ -1,10 +1,8 @@
 import { LoanApplicationProvider } from '@/contexts/LoanAppContext';
-import { LoanParams } from '@/components/organisms/LoanParams';
+import { LoanAppStepRenderer } from './LaonAppStepRenderer/LoanAppStepRenderer';
 
-export const LoanApplication = () => {
-  return (
-    <LoanApplicationProvider>
-      <LoanParams />
-    </LoanApplicationProvider>
-  );
-};
+export const LoanApplication = () => (
+  <LoanApplicationProvider>
+    <LoanAppStepRenderer />
+  </LoanApplicationProvider>
+);

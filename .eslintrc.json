@@ -48,7 +48,8 @@
     "no-underscore-dangle": 0,
     "jsx-a11y/no-autofocus": 0,
     "import/extensions": 0,
-    "react/function-component-definition": 0
+    "react/function-component-definition": 0,
+    "import/no-absolute-path": 0
   },
   "overrides": [
     {

@@ -1,81 +1,29 @@
-import React, { FormEvent, useState } from 'react';
-
 import Image from 'next/image';
-import InformationInputs from '../../molecules/InformationInputs';
-import NavButton from '../../atoms/NavButton';
 import form from 'public/images/form.webp';
-import { onInputChangeEvent } from '@/types/ts-utils';
-import { useInfo } from '../../../contexts/LoanAppContext';
+import { ClientInfoForm } from './components/ClientInfoForm/ClientInfoForm';
+import { Section } from '@/components/atoms/Section';
+import { useLoanApplication } from '@/contexts/LoanAppContext';
+import { BackButton } from '@/components/atoms/BackButton';
 
-export default function ClientInfo() {
-  const [submitted, setSubmitted] = useState(false);
-  const { loan, clientInfo: values, setClientInfo: setValues } = useInfo();
+export const ClientInfo = () => {
+  const { setPrevStep } = useLoanApplication();
 
-  const handleFirstNameChange = (event: onInputChangeEvent) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      firstName: event.target.value,
-    }));
-  };
-
-  const handleLastNameChange = (event: onInputChangeEvent) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      lastName: event.target.value,
-    }));
-  };
-
-  const handleEmailChange = (event: onInputChangeEvent) => {
-    event.persist();
-    console.log(event.target.validity.patternMismatch);
-    setValues((values) => ({
-      ...values,
-      email: event.target.value,
-    }));
-  };
-
-  const handleAddressChange = (event: onInputChangeEvent) => {
-    event.persist();
-    setValues((values) => ({
-      ...values,
-      address: event.target.value,
-    }));
-  };
-
-  const handleSubmit = (e: FormEvent) => {
-    e.preventDefault();
-    const applicationSummary = Object.assign(loan, values);
-    const isNulllish = Object.values(applicationSummary).every((value) =>
-      value !== null ? true : false
-    );
-    if (isNulllish) {
-      console.log(applicationSummary);
-    }
-    setSubmitted(true);
-  };
   return (
-    <div className="bg-white rounded min-h-[60vh] min-w-[70vw]  flex justify-between">
-      <div className="p-10">
-        <h2 className="font-bold text-2xl">Your personal information</h2>
-        <form id="clientInfo" onSubmit={handleSubmit}>
-          <InformationInputs
-            handleFirstNameChange={handleFirstNameChange}
-            handleLastNameChange={handleLastNameChange}
-            handleEmailChange={handleEmailChange}
-            handleAddressChange={handleAddressChange}
-            values={values}
-            submitted={submitted}
-          />
-        </form>
-        <NavButton path="/finish" nextPage="Submit" onClick={handleSubmit} />
+    <Section>
+      <BackButton onClick={setPrevStep} />
+      <h2 className="mb-5 text-xl text-center text-gray-100">
+        Your personal information
+      </h2>
+      <div className="w-full flex flex-col items-center gap-5 lg:flex-row">
+        <Image
+          width={500}
+          height={700}
+          className="w-full h-full lg:max-w-[500px] xl:max-w-[700px] rounded"
+          alt="money"
+          src={form}
+        />
+        <ClientInfoForm />
       </div>
-      <Image
-        className="w-auto max-h-[60vh] rounded-r-sm"
-        alt="money"
-        src={form}
-      />
-    </div>
+    </Section>
   );
-}
+};

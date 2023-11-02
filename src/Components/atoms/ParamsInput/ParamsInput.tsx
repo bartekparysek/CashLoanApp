@@ -1,5 +1,17 @@
 import { FC, PropsWithChildren } from 'react';
+import { ParamsInputProps } from './ParamsInput.types';
 
-export const ParamsInput: FC<PropsWithChildren> = ({ children }) => (
-  <div className="flex items-end mb-2 ">{children}</div>
+export const ParamsInput: FC<PropsWithChildren<ParamsInputProps>> = ({
+  children,
+  label,
+  name,
+}) => (
+  <div className="w-full text-center mb-5">
+    <label htmlFor={name} className="block font-bold mb-5">
+      {label}
+    </label>
+    <div className="flex flex-col items-center sm:flex-row sm:items-center mb-2 w-full px-5">
+      {children}
+    </div>
+  </div>
 );
