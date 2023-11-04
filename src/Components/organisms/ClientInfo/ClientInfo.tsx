@@ -1,15 +1,17 @@
 import Image from 'next/image';
 import form from 'public/images/form.webp';
+import { FC } from 'react';
 import { ClientInfoForm } from './components/ClientInfoForm/ClientInfoForm';
 import { Section } from '@/components/atoms/Section';
 import { useLoanApplication } from '@/contexts/LoanAppContext';
 import { BackButton } from '@/components/atoms/BackButton';
+import { StepProps } from '@/components/pages/LoanApplication/LaonAppStepRenderer';
 
-export const ClientInfo = () => {
+export const ClientInfo: FC<StepProps> = ({ key }) => {
   const { setPrevStep } = useLoanApplication();
 
   return (
-    <Section>
+    <Section key={key}>
       <BackButton onClick={setPrevStep} />
       <h2 className="mb-5 text-xl text-center text-gray-100">
         Your personal information
