@@ -1,12 +1,10 @@
-import { FC } from 'react';
 import { Button } from '@/components/atoms/Button';
 import { Section } from '@/components/atoms/Section';
 import { ValuesList } from '@/components/atoms/ValuesList';
 import { useLoanApplication } from '@/contexts/LoanAppContext';
 import { BackButton } from '@/components/atoms/BackButton';
-import { StepProps } from '@/components/pages/LoanApplication/LaonAppStepRenderer';
 
-export const Summary: FC<StepProps> = ({ key }) => {
+export const Summary = () => {
   const { loan, clientInfo, setNextStep, setPrevStep } = useLoanApplication();
 
   const mappedLoanSummary = Object.keys(loan).map((val) => {
@@ -27,7 +25,7 @@ export const Summary: FC<StepProps> = ({ key }) => {
   }));
 
   return (
-    <Section key={key}>
+    <Section>
       <BackButton onClick={setPrevStep} />
       <h2 className="text-center text-xl mb-5">Summary</h2>
       <div className="flex flex-col lg:flex-row gap-5 mb-5">

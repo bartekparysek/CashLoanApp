@@ -1,3 +1,3 @@
 export type StepProps = {
-  key: string;
+  id: string;
 };

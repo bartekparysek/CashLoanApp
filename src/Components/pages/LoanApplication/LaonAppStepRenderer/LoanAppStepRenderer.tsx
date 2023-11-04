@@ -13,13 +13,13 @@ export const LoanAppStepRenderer = () => {
       {(() => {
         switch (step) {
           case 1:
-            return <LoanParams key={step.toString()} />;
+            return <LoanParams />;
           case 2:
-            return <ClientInfo key={step.toString()} />;
+            return <ClientInfo />;
           case 3:
-            return <Summary key={step.toString()} />;
+            return <Summary />;
           case 4:
-            return <FinishApplication key={step.toString()} />;
+            return <FinishApplication />;
           default:
             return null;
         }
