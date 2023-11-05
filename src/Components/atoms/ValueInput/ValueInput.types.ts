@@ -1,7 +1,7 @@
-import { onInputChangeEvent } from '@/types/ts-utils';
+import { OnInputChangeEvent } from '@/types/ts-utils';
 
 export type ValueInputProps = {
-  onChange?: (event: onInputChangeEvent) => void;
+  onChange?: (event: OnInputChangeEvent) => void;
   value?: number;
   placeholder: string;
   minMax: { min: number; max: number };

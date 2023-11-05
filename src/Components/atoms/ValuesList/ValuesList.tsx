@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { ValuesListProps } from '.';
+import { ValuesListProps } from './ValuesList.types';
 
 export const ValuesList: FC<ValuesListProps> = ({ values }) => (
   <ul className="w-full bg-neutral-100 rounded-lg p-5">

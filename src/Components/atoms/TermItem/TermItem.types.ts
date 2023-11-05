@@ -1,7 +1,7 @@
-import { nullNumberUnion } from '@/types/ts-utils';
+import { NullNumberUnion } from '@/types/ts-utils';
 
 export type TermItemProps = {
-  value: nullNumberUnion;
+  value: NullNumberUnion;
   description: string;
   smallValue: string;
 };

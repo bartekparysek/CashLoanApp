@@ -1,4 +1,4 @@
-import { Keys, Values } from '@/types/ts-utils';
+import { Keys } from '@/types/ts-utils';
 
 export const TailwindSizes = {
   xs: '375px',
@@ -20,6 +20,7 @@ export function getSizes(
   const mapToString = [];
 
   if (TailwindSizes) {
+    // eslint-disable-next-line array-callback-return
     Object.keys(TailwindSizes).map((key) => {
       const size = key as keyof typeof TailwindSizes;
       if (sizes[size]) {

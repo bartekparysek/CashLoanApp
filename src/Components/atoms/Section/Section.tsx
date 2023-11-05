@@ -11,7 +11,7 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
     initial={{ opacity: 0 }}
     animate={{ opacity: 1 }}
     exit={{ opacity: 0 }}
-    transition={{ duration: 0.4, ease: 'easeInOut' }}
+    transition={{ duration: 0.8, ease: 'easeInOut' }}
     className={cn(
       'bg-white rounded min-h-[50vh] w-full p-5 sm:p-10 border border-solid border-gray-400',
       className
