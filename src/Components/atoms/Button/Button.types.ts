@@ -19,7 +19,7 @@ export const ButtonColors = {
   Gray: 'gray',
   Shady: 'shady',
   Black: 'black',
-  Pinball: 'pinball',
+  Iron: 'iron',
 } as const;
 
 export type ButtonColor = Values<typeof ButtonColors>;

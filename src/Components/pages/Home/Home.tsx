@@ -5,7 +5,7 @@ import { routes } from '@/routes';
 import { Section } from '@/components/atoms/Section';
 
 export const Home = () => (
-  <Section className="w-full gap-5 flex items-center flex-col lg:flex-row justify-between">
+  <Section className="w-full flex items-center gap-8 flex-col xl:flex-row lg:gap-5 lg:justify-between">
     <Image
       width={500}
       height={700}
@@ -14,9 +14,9 @@ export const Home = () => (
       src={money}
     />
 
-    <div className="flex flex-col justify-around w-full lg:items-center ">
-      <div className="flex flex-col mb-5">
-        <h2 className="text-4xl mb-5 text-gray-100">
+    <div className="flex flex-col justify-around w-full lg:items-center text-center">
+      <div className="flex flex-col mb-8">
+        <h2 className="text-xl lg:text-5xl mb-8 text-gray-100 font-playfair">
           Cash Loan <strong>(APR 7,33%)</strong>
         </h2>
         <p className="text-gray-300 text-base">
@@ -30,9 +30,10 @@ export const Home = () => (
         color="yippie"
         className="lg:justify-self-start"
         as="a"
+        size="large"
         href={routes.loan()}
       >
-        Fill Loan Application
+        Start
       </Button>
     </div>
   </Section>

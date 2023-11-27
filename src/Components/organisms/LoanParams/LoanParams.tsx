@@ -17,7 +17,7 @@ export const LoanParams = () => {
       <LoanTerms loan={loan} />
       <ParametersForm />
       <div className="flex justify-center">
-        <Button onClick={setNextStep} color="yippie" size="large">
+        <Button onClick={setNextStep} color="green" size="large">
           Next
         </Button>
       </div>

@@ -10,7 +10,19 @@ module.exports = {
   theme: {
     colors: {
       yippie: '#F8F8A0',
-      green: '#5FD157',
+      green: {
+        '50': '#f3fcf1',
+        '100': '#e1f9df',
+        '200': '#c4f2c0',
+        '300': '#94e68f',
+        '400': '#5fd157',
+        '500': '#38b730',
+        '600': '#299722',
+        '700': '#23771e',
+        '800': '#205e1d',
+        '900': '#1c4d1a',
+        '950': '#092a09',
+      },
       blue: '#02ACE5',
       yellow: '#FCDF25',
       white: '#ffff',
@@ -23,7 +35,19 @@ module.exports = {
       },
       shady: '#4c4c4c',
       black: '#000',
-      pinball: '#d3d3d3',
+      iron: {
+        '50': '#f7f7f7',
+        '100': '#ededed',
+        '200': '#dfdfdf',
+        '300': '#d3d3d3',
+        '400': '#adadad',
+        '500': '#999999',
+        '600': '#888888',
+        '700': '#7b7b7b',
+        '800': '#676767',
+        '900': '#545454',
+        '950': '#363636',
+      },
       lynxWhite: '#f7f7f7',
       neutral: {
         '50': '#fafafa',
@@ -44,8 +68,8 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        inter: ['Inter', ...defaultTheme.fontFamily.sans],
-        libre: ['LibreBaskerville', ...defaultTheme.fontFamily.sans],
+        poppins: ['Poppins', ...defaultTheme.fontFamily.sans],
+        playfair: ['PlayfairDisplay', ...defaultTheme.fontFamily.sans],
       },
     },
   },

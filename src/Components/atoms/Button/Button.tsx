@@ -32,7 +32,7 @@ export const Button: <E extends ElementType = 'button'>(
       <Element
         ref={ref}
         className={cn(
-          'py-3 px-8 font-inter text-md flex justify-center leading-5 rounded-full hover:bg-opacity-70',
+          'py-3 px-8 text-md flex justify-center leading-5 rounded-full hover:bg-opacity-70',
           {
             'opacity-50 cursor-not-allowed hover:bg-opacity-100 focus-visible:bg-opacity-100':
               disabled,
@@ -41,9 +41,10 @@ export const Button: <E extends ElementType = 'button'>(
             'bg-shady': color && color === ButtonColors.Shady,
             'bg-red': color && color === ButtonColors.Red,
             'bg-yellow': color && color === ButtonColors.Yellow,
-            'bg-green': color && color === ButtonColors.Green,
+            'bg-green-300 text-white': color && color === ButtonColors.Green,
             'bg-white': color && color === ButtonColors.White,
-            'bg-pinball': color && color === ButtonColors.Pinball,
+            'bg-iron-300 hover:bg-iron-600':
+              color && color === ButtonColors.Iron,
             'w-full': size === ButtonSizes.Full,
             'w-52': size === ButtonSizes.Large,
             'w-32': size === ButtonSizes.Medium,

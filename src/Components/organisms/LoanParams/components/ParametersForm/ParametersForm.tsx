@@ -43,10 +43,10 @@ export const ParametersForm = () => {
     calculateLoanParams();
   };
 
-  useEffect(() => {
-    register('amount');
-    register('period');
-  }, [register]);
+  // useEffect(() => {
+  //   register('amount');
+  //   register('period');
+  // }, [register]);
 
   useEffect(() => {
     const subscription = watch((value) => {
@@ -63,8 +63,8 @@ export const ParametersForm = () => {
   }, [setLoan, watch]);
 
   return (
-    <form>
-      <div className="w-full">
+    <form className="flex justify-center">
+      <div className="w-full max-w-[900px]">
         <ParamsInput label={amountLabel} name="amount">
           <Range
             {...register('amount')}
@@ -72,6 +72,7 @@ export const ParametersForm = () => {
             placeholder={amountPlaceholder}
             minMax={amountMinMax}
             step={amountStep}
+            value={parseFloat(values?.amount as string)}
           />
           <ValueInput
             name="amountNumber"
@@ -80,6 +81,7 @@ export const ParametersForm = () => {
             placeholder={amountPlaceholder}
             minMax={amountMinMax}
             step={amountStep}
+            className="max-w-[300px]"
           />
         </ParamsInput>
         <ParamsInput label={periodLabel} name="period">
@@ -89,6 +91,7 @@ export const ParametersForm = () => {
             placeholder={periodPlaceholder}
             minMax={periodMinMax}
             step={periodStep}
+            value={parseFloat(values?.period as string)}
           />
           <ValueInput
             name="periodNumber"
@@ -97,6 +100,7 @@ export const ParametersForm = () => {
             placeholder={periodPlaceholder}
             minMax={periodMinMax}
             step={periodStep}
+            className="max-w-[300px]"
           />
         </ParamsInput>
       </div>

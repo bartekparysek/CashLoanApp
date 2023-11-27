@@ -28,9 +28,11 @@ export const Summary = () => {
     <Section>
       <BackButton onClick={setPrevStep} />
       <h2 className="text-center text-xl mb-5">Summary</h2>
-      <div className="flex flex-col lg:flex-row gap-5 mb-5">
-        <ValuesList values={mappedLoanSummary} />
-        <ValuesList values={mappedClientInfoSummary} />
+      <div className="flex mb-5 w-full justify-center">
+        <div className="w-full flex flex-col lg:flex-row gap-5 2xl:max-w-[60vw]">
+          <ValuesList values={mappedLoanSummary} />
+          <ValuesList values={mappedClientInfoSummary} />
+        </div>
       </div>
       <Button color="yippie" className="mx-auto" onClick={setNextStep}>
         Finish Application
