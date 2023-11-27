@@ -4,13 +4,13 @@
 @import "./fonts.css";
 
 :root {
-  --font-inter: 'Inter';
-  --font-libre: 'LibreBaskerville';
+  --font-poppins: 'Poppins';
+  --font-playfair: 'PlayfairDisplay';
 }
 
 @layer base {
 	html {
-		font-family: Inter,system-ui, sans-serif;
+		font-family: Poppins,system-ui, sans-serif;
 	}
 	body {
 		background-color: #f7f7f7;
@@ -23,7 +23,7 @@
 		height: 20px;
 		cursor: pointer;
 		background: #fff;
-		box-shadow: -405px 0 0 400px rgba(68, 104, 192, 0.71);
+		box-shadow: -1000px 0 0 996px #94e68f;
 		border-radius: 50%;
 	}
 }
