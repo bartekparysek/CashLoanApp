@@ -5,18 +5,21 @@ import { ClientInfoValues } from './ClientInfoForm.types';
 import { Button } from '@/components/atoms/Button';
 import { isValidEmail } from '@/helpers/regex';
 import { useLoanApplication } from '@/contexts/LoanAppContext';
+import { nextStepAtom } from '@/store/loanStep';
+import { useSetAtom } from 'jotai';
 
 export const ClientInfoForm = () => {
-  const { setNextStep, setClientInfo } = useLoanApplication();
+  const { setClientInfo } = useLoanApplication();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<ClientInfoValues>({});
+  const setNextAtom = useSetAtom(nextStepAtom);
 
   const onSubmit = (data: ClientInfoValues) => {
     setClientInfo(data);
-    setNextStep();
+    setNextAtom();
   };
 
   return (

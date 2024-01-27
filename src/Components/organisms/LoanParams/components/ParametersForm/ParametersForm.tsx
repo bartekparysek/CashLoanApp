@@ -1,20 +1,15 @@
-import { useForm } from 'react-hook-form';
-import { useEffect } from 'react';
+import { atom, useAtom, SetStateAction } from 'jotai';
 import { ParamsInput } from '@/components/atoms/ParamsInput';
-import { Range } from '@/components/atoms/Range';
 import { ValueInput } from '@/components/atoms/ValueInput';
 import { content } from '@/config';
-import { useLoanApplication } from '@/contexts/LoanAppContext';
 import { OnInputChangeEvent } from '@/types/ts-utils';
 
+export const loanAmountAtom = atom(1000);
+export const loanPeriodAtom = atom(6);
+
 export const ParametersForm = () => {
-  const { loan, setLoan, calculateLoanParams } = useLoanApplication();
-  const { register, watch, setValue } = useForm<{
-    amount: string | number;
-    period: string | number;
-  }>({
-    defaultValues: { amount: loan.amount, period: loan.period },
-  });
+  const [loanAmount, setLoanAmount] = useAtom(loanAmountAtom);
+  const [periodAmount, setPeriodAmount] = useAtom(loanPeriodAtom);
 
   const {
     amountLabel,
@@ -27,57 +22,28 @@ export const ParametersForm = () => {
     periodStep,
   } = content;
 
-  const values = watch();
-
-  const handleAmountChange = (e: OnInputChangeEvent) => {
-    if (e.target.value === '') return;
-    setValue('amount', parseFloat(e.target.value));
-  };
-
-  const handlePeriodChange = (e: OnInputChangeEvent) => {
-    if (e.target.value === '') return;
-    setValue('period', parseFloat(e.target.value));
-  };
-
-  const handleMouseUp = () => {
-    calculateLoanParams();
-  };
-
-  // useEffect(() => {
-  //   register('amount');
-  //   register('period');
-  // }, [register]);
-
-  useEffect(() => {
-    const subscription = watch((value) => {
-      setLoan((prev) => ({
-        ...prev,
-        amount: parseFloat(value?.amount! as string),
-        period: parseFloat(value?.period! as string),
-      }));
-    });
-
-    return () => {
-      subscription.unsubscribe();
+  const handleChange =
+    (setter: (val: number) => void) =>
+    (e?: OnInputChangeEvent, value?: string) => {
+      if (e && e.target.value !== '') {
+        setter(+e.target.value);
+      } else if (value && value !== '') {
+        setter(+value);
+      }
     };
-  }, [setLoan, watch]);
+
+  const handleAmountChange = handleChange(setLoanAmount);
+
+  const handlePeriodChange = handleChange(setPeriodAmount);
 
   return (
-    <form className="flex justify-center">
+    <div className="flex justify-center">
       <div className="w-full max-w-[900px]">
         <ParamsInput label={amountLabel} name="amount">
-          <Range
-            {...register('amount')}
-            onMouseUp={handleMouseUp}
-            placeholder={amountPlaceholder}
-            minMax={amountMinMax}
-            step={amountStep}
-            value={parseFloat(values?.amount as string)}
-          />
           <ValueInput
-            name="amountNumber"
+            name="amount"
             onChange={handleAmountChange}
-            value={Number(values.amount)}
+            value={loanAmount}
             placeholder={amountPlaceholder}
             minMax={amountMinMax}
             step={amountStep}
@@ -85,18 +51,10 @@ export const ParametersForm = () => {
           />
         </ParamsInput>
         <ParamsInput label={periodLabel} name="period">
-          <Range
-            {...register('period')}
-            onMouseUp={handleMouseUp}
-            placeholder={periodPlaceholder}
-            minMax={periodMinMax}
-            step={periodStep}
-            value={parseFloat(values?.period as string)}
-          />
           <ValueInput
-            name="periodNumber"
+            name="period"
             onChange={handlePeriodChange}
-            value={Number(values.period)}
+            value={periodAmount}
             placeholder={periodPlaceholder}
             minMax={periodMinMax}
             step={periodStep}
@@ -104,6 +62,6 @@ export const ParametersForm = () => {
           />
         </ParamsInput>
       </div>
-    </form>
+    </div>
   );
 };

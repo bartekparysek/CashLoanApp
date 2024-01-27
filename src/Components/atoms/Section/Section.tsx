@@ -13,7 +13,7 @@ export const Section: FC<PropsWithChildren<SectionProps>> = ({
     exit={{ opacity: 0 }}
     transition={{ duration: 0.8, ease: 'easeInOut' }}
     className={cn(
-      'bg-white rounded min-h-[50vh] w-full p-5 sm:p-10 border border-solid border-gray-400',
+      'bg-white rounded lg:min-h-[50vh] md:max-w-[75vw] 2xl:max-w-[60vw] w-full p-5 sm:p-10 border border-solid border-gray-400 mb-5',
       className
     )}
   >

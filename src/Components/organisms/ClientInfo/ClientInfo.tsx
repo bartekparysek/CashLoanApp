@@ -2,15 +2,15 @@ import Image from 'next/image';
 import form from 'public/images/form.webp';
 import { ClientInfoForm } from './components/ClientInfoForm/ClientInfoForm';
 import { Section } from '@/components/atoms/Section';
-import { useLoanApplication } from '@/contexts/LoanAppContext';
 import { BackButton } from '@/components/atoms/BackButton';
+import { prevStepAtom } from '@/store/loanStep';
+import { useSetAtom } from 'jotai';
 
 export const ClientInfo = () => {
-  const { setPrevStep } = useLoanApplication();
-
+  const setPrevAtom = useSetAtom(prevStepAtom);
   return (
     <Section>
-      <BackButton onClick={setPrevStep} />
+      <BackButton onClick={setPrevAtom} />
       <h2 className="mb-5 text-xl text-center text-gray-100">
         Your personal information
       </h2>

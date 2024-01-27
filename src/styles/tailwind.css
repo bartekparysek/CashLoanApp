@@ -26,4 +26,18 @@
 		box-shadow: -1000px 0 0 996px #94e68f;
 		border-radius: 50%;
 	}
+
+	input[type="number"] {
+		-webkit-appearance: textfield;
+			 -moz-appearance: textfield;
+						appearance: textfield;
+	}
+	input[type=number]::-webkit-inner-spin-button, 
+	input[type=number]::-webkit-outer-spin-button { 
+		-webkit-appearance: none;
+	}
+
+	.main-linear {
+		background:linear-gradient(0deg,rgba(255,128,73,0.2), rgba(2,172,229,0.2)), linear-gradient(0deg,#ECEC70,  #F8F8A0);
+	}
 }

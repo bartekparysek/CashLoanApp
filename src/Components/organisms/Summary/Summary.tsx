@@ -3,9 +3,13 @@ import { Section } from '@/components/atoms/Section';
 import { ValuesList } from '@/components/atoms/ValuesList';
 import { useLoanApplication } from '@/contexts/LoanAppContext';
 import { BackButton } from '@/components/atoms/BackButton';
+import { useSetAtom } from 'jotai';
+import { nextStepAtom, prevStepAtom } from '@/store/loanStep';
 
 export const Summary = () => {
-  const { loan, clientInfo, setNextStep, setPrevStep } = useLoanApplication();
+  const { loan, clientInfo } = useLoanApplication();
+  const setNextAtom = useSetAtom(nextStepAtom);
+  const setPrevAtom = useSetAtom(prevStepAtom);
 
   const mappedLoanSummary = Object.keys(loan).map((val) => {
     const name = () => {
@@ -26,7 +30,7 @@ export const Summary = () => {
 
   return (
     <Section>
-      <BackButton onClick={setPrevStep} />
+      <BackButton onClick={setPrevAtom} />
       <h2 className="text-center text-xl mb-5">Summary</h2>
       <div className="flex mb-5 w-full justify-center">
         <div className="w-full flex flex-col lg:flex-row gap-5 2xl:max-w-[60vw]">
@@ -34,7 +38,12 @@ export const Summary = () => {
           <ValuesList values={mappedClientInfoSummary} />
         </div>
       </div>
-      <Button color="yippie" className="mx-auto" onClick={setNextStep}>
+      <Button
+        color="yippie"
+        className="mx-auto"
+        type="button"
+        onClick={setNextAtom}
+      >
         Finish Application
       </Button>
     </Section>
