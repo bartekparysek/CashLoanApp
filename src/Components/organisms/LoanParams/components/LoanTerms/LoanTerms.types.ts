@@ -1,5 +1,5 @@
-import { LoanParams } from '@/contexts/LoanAppContext';
+import { LoanParams } from '@/store/loan';
 
 export type LoanTermsProps = {
-  loan: LoanParams;
+  loan: { amount: number; period: number } & LoanParams;
 };

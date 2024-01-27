@@ -1,13 +1,15 @@
 import { Button } from '@/components/atoms/Button';
 import { Section } from '@/components/atoms/Section';
 import { ValuesList } from '@/components/atoms/ValuesList';
-import { useLoanApplication } from '@/contexts/LoanAppContext';
 import { BackButton } from '@/components/atoms/BackButton';
-import { useSetAtom } from 'jotai';
+import { useSetAtom, useAtomValue, useAtom } from 'jotai';
 import { nextStepAtom, prevStepAtom } from '@/store/loanStep';
+import { loanAtom } from '@/store/loan';
+import { clientInfoAtom } from '@/store/clientInfo';
 
 export const Summary = () => {
-  const { loan, clientInfo } = useLoanApplication();
+  const loan = useAtomValue(loanAtom);
+  const clientInfo = useAtomValue(clientInfoAtom);
   const setNextAtom = useSetAtom(nextStepAtom);
   const setPrevAtom = useSetAtom(prevStepAtom);
 

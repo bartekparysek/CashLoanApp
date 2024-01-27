@@ -1,5 +1,4 @@
 import { atom } from 'jotai';
-import { debounce } from 'lodash';
 import { NullNumberUnion } from '@/types/ts-utils';
 import {
   loanAmountAtom,
@@ -22,30 +21,16 @@ export type LoanParams = {
   totalPayOff: NullNumberUnion;
 };
 
-export type ClientInfo = {
-  firstName: string;
-  lastName: string;
-  email: string;
-  address: string;
-};
-
-export type LoanStoreValues = {
-  loan: LoanParams;
-  clientInfo: ClientInfo;
-  step: number;
-};
-
-const loan = atom(LoanDefaultValues);
-
-export const loanDerived = atom((get) => {
-  const loanValue = get(loan);
+export const loanAtom = atom((get) => {
   const amount = get(loanAmountAtom);
   const period = get(loanPeriodAtom);
 
   const loanPeriodDays = Math.round(period * 30.41666);
   const interest = parseFloat(
     (
-      ((amount * parseFloat((loanValue.interestRate / 100).toFixed(3))) / 365) *
+      ((amount *
+        parseFloat((LoanDefaultValues.interestRate / 100).toFixed(3))) /
+        365) *
       loanPeriodDays
     ).toFixed(2)
   );
@@ -56,7 +41,7 @@ export const loanDerived = atom((get) => {
   );
 
   return {
-    ...loanValue,
+    ...LoanDefaultValues,
     interest,
     installment,
     apr,

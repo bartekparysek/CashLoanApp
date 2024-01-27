@@ -1,6 +1,5 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import { AnimatePresence } from 'framer-motion';
-import { useLoanApplication } from '@/contexts/LoanAppContext';
 import { LoanParams } from '@/components/organisms/LoanParams';
 import { ClientInfo } from '@/components/organisms/ClientInfo';
 import { FinishApplication } from '@/components/organisms/FinishApplication';

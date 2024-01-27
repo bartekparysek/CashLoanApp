@@ -4,12 +4,12 @@ import { TextInput } from '@/components/atoms/TextInput';
 import { ClientInfoValues } from './ClientInfoForm.types';
 import { Button } from '@/components/atoms/Button';
 import { isValidEmail } from '@/helpers/regex';
-import { useLoanApplication } from '@/contexts/LoanAppContext';
 import { nextStepAtom } from '@/store/loanStep';
-import { useSetAtom } from 'jotai';
+import { useAtom, useSetAtom } from 'jotai';
+import { clientInfoAtom } from '@/store/clientInfo';
 
 export const ClientInfoForm = () => {
-  const { setClientInfo } = useLoanApplication();
+  const [_, setClientInfo] = useAtom(clientInfoAtom);
   const {
     register,
     handleSubmit,
