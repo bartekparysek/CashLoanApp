@@ -1,9 +1,8 @@
 import { Button } from '@/components/atoms/Button';
 import { Section } from '@/components/atoms/Section';
 import { ValuesList } from '@/components/atoms/ValuesList';
-import { BackButton } from '@/components/atoms/BackButton';
-import { useSetAtom, useAtomValue, useAtom } from 'jotai';
-import { nextStepAtom, prevStepAtom } from '@/store/loanStep';
+import { useSetAtom, useAtomValue } from 'jotai';
+import { nextStepAtom } from '@/store/loanStep';
 import { loanAtom } from '@/store/loan';
 import { clientInfoAtom } from '@/store/clientInfo';
 import { SectionHeader } from '@/components/molecules/SectionHeader';
