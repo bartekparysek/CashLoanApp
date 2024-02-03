@@ -6,10 +6,10 @@ export const TermItem: FC<TermItemProps> = ({
   description,
   smallValue,
 }) => (
-  <li className="flex flex-col sm:items-center last:col-start-3 last:row-start-2">
-    <p className="text-gray-200 font-bold mb-2 ">{description}</p>
-    <p className="text-blue font-bold">
-      <span className="text-3xl mr-1">{value}</span>
+  <li className="flex flex-col text-center sm:items-center lg:last:col-start-3 lg:last:row-start-2">
+    <p className="text-gray-300 mb-1 ">{description}</p>
+    <p className="text-green-800">
+      <span className="text-2xl mr-1">{value}</span>
       <small>{smallValue}</small>
     </p>
   </li>

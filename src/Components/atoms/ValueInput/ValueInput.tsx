@@ -26,7 +26,7 @@ export const ValueInput = forwardRef<HTMLInputElement, ValueInputProps>(
     };
 
     return (
-      <div className="flex items-center border border-solid border-gray-300 rounded-full min-w-[12.5rem] md:min-w-[300px]">
+      <div className="flex items-center border border-solid border-gray-300 rounded min-w-[12.5rem] md:min-w-[300px]">
         <button className={btnStyles} type="button" onClick={handleDecrease}>
           -
         </button>

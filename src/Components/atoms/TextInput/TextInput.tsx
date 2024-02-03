@@ -17,7 +17,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         {...rest}
         className={cn([
           className,
-          'block w-full px-3 h-10 text-base font-normal bg-white border border-solid border-gray-300 rounded-full transition ease-in-out',
+          'block w-full px-3 h-10 text-base font-normal bg-white border border-solid border-gray-300 rounded transition ease-in-out',
           'focus:outline-none',
           { 'border-red': error },
         ])}

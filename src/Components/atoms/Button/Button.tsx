@@ -32,7 +32,7 @@ export const Button: <E extends ElementType = 'button'>(
       <Element
         ref={ref}
         className={cn(
-          'py-3 px-8 text-md font-medium flex justify-center leading-5 rounded-full hover:bg-opacity-70',
+          'py-3 px-8 text-md font-medium flex justify-center leading-5 rounded hover:bg-opacity-70',
           {
             'opacity-50 cursor-not-allowed hover:bg-opacity-100 focus-visible:bg-opacity-100':
               disabled,
@@ -44,7 +44,7 @@ export const Button: <E extends ElementType = 'button'>(
             'bg-yellow': color && color === ButtonColors.Yellow,
             'bg-green-300 text-white': color && color === ButtonColors.Green,
             'bg-white': color && color === ButtonColors.White,
-            'bg-iron-300 hover:bg-iron-600':
+            'bg-iron-200 hover:bg-iron-400':
               color && color === ButtonColors.Iron,
             'w-full': size === ButtonSizes.Full,
             'w-52': size === ButtonSizes.Large,

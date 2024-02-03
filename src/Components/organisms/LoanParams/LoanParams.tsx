@@ -10,6 +10,7 @@ import { Section } from '@/components/atoms/Section';
 import { BackButton } from '@/components/atoms/BackButton';
 import { loanAtom } from '@/store/loan';
 import { nextStepAtom, prevStepAtom } from '@/store/loanStep';
+import { SectionHeader } from '@/components/molecules/SectionHeader';
 
 export const LoanParams = () => {
   const [loan] = useAtom(loanAtom);
@@ -20,10 +21,8 @@ export const LoanParams = () => {
 
   return (
     <Section>
-      <BackButton onClick={setPrevAtom} />
-      <h2 className="py-5 text-xl text-center text-gray-100">
-        Your Loan Terms
-      </h2>
+      <SectionHeader title="Your Loan Terms" />
+      <ParametersForm />
       <LoanTerms
         loan={{
           ...loan,
@@ -31,7 +30,7 @@ export const LoanParams = () => {
           amount: loanAmount,
         }}
       />
-      <ParametersForm />
+
       <div className="flex justify-center">
         <Button onClick={setNextAtom} color="yippie" size="large">
           Next

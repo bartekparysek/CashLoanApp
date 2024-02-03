@@ -38,7 +38,7 @@ export const ParametersForm = () => {
 
   return (
     <div className="flex justify-center">
-      <div className="w-full max-w-[900px]">
+      <div className="flex flex-col lg:flex-row w-full max-w-[900px]">
         <ParamsInput label={amountLabel} name="amount">
           <ValueInput
             name="amount"
