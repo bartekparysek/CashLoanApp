@@ -8,8 +8,8 @@ export const TermItem: FC<TermItemProps> = ({
 }) => (
   <li className="flex flex-col text-center sm:items-center lg:last:col-start-3 lg:last:row-start-2">
     <p className="text-gray-300 mb-1 ">{description}</p>
-    <p className="text-green-800">
-      <span className="text-2xl mr-1">{value}</span>
+    <p className="">
+      <span className="text-xl mr-1">{value}</span>
       <small>{smallValue}</small>
     </p>
   </li>
