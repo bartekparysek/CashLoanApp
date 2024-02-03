@@ -7,9 +7,8 @@ import {
 } from './components/ParametersForm';
 import { Button } from '@/components/atoms/Button';
 import { Section } from '@/components/atoms/Section';
-import { BackButton } from '@/components/atoms/BackButton';
 import { loanAtom } from '@/store/loan';
-import { nextStepAtom, prevStepAtom } from '@/store/loanStep';
+import { nextStepAtom } from '@/store/loanStep';
 import { SectionHeader } from '@/components/molecules/SectionHeader';
 
 export const LoanParams = () => {
@@ -17,7 +16,6 @@ export const LoanParams = () => {
   const [loanAmount] = useAtom(loanAmountAtom);
   const [periodAmount] = useAtom(loanPeriodAtom);
   const setNextAtom = useSetAtom(nextStepAtom);
-  const setPrevAtom = useSetAtom(prevStepAtom);
 
   return (
     <Section>
