@@ -9,10 +9,11 @@ export const BackButton: FC<BackButtonProps> = ({ onClick, className }) => (
     color="iron"
     onClick={onClick}
     className={cn(
-      'p-2.5 justify-self-start flex text-xs text-neutral-600',
+      'p-1 md:p-2.5 justify-self-start flex text-xs text-neutral-600',
       className
     )}
   >
-    <FiChevronLeft className="ml-[-2px] w-5 h-5 mr-1" /> Back
+    <FiChevronLeft className="ml-[-2px] w-5 h-5 md:mr-1" />
+    <span className="hidden md:inline">Back</span>
   </Button>
 );

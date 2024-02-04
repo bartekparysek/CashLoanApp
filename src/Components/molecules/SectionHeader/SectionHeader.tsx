@@ -9,7 +9,7 @@ export const SectionHeader: FC<SectionHeaderProps> = ({ title }) => {
   return (
     <div className="flex items-center justify-between mb-5">
       <BackButton onClick={setPrevAtom} />
-      <h2 className="py-5 ml-2 text-xl text-center font-playfair absolute -translate-x-1/2 left-1/2 text-gray-100">
+      <h2 className="py-5 ml-2 lg:text-xl text-center font-playfair absolute -translate-x-1/2 left-1/2 text-gray-100">
         {title}
       </h2>
     </div>
