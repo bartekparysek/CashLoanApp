@@ -20,19 +20,21 @@ export const LoanParams = () => {
   return (
     <Section>
       <SectionHeader title="Your Loan Terms" />
-      <ParametersForm />
-      <LoanTerms
-        loan={{
-          ...loan,
-          period: periodAmount,
-          amount: loanAmount,
-        }}
-      />
+      <div className="max-w-[43.75rem] mx-auto">
+        <ParametersForm />
+        <LoanTerms
+          loan={{
+            ...loan,
+            period: periodAmount,
+            amount: loanAmount,
+          }}
+        />
 
-      <div className="flex justify-center">
-        <Button onClick={setNextAtom} color="yippie" size="large">
-          Next
-        </Button>
+        <div className="flex justify-center">
+          <Button onClick={setNextAtom} color="yippie" size="large">
+            Next
+          </Button>
+        </div>
       </div>
     </Section>
   );

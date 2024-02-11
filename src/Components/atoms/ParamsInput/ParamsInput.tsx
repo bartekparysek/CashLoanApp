@@ -10,8 +10,6 @@ export const ParamsInput: FC<PropsWithChildren<ParamsInputProps>> = ({
     <label htmlFor={name} className="block font-bold mb-5">
       {label}
     </label>
-    <div className="flex flex-col items-center mb-2 w-full px-5">
-      {children}
-    </div>
+    <div className="flex flex-col items-center mb-2 w-full ">{children}</div>
   </div>
 );

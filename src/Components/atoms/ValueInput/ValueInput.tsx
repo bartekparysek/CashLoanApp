@@ -26,15 +26,19 @@ export const ValueInput = forwardRef<HTMLInputElement, ValueInputProps>(
     };
 
     return (
-      <div className="flex items-center border border-solid border-gray-300 rounded min-w-[12.5rem] md:min-w-[300px]">
-        <button className={btnStyles} type="button" onClick={handleDecrease}>
+      <div className="flex items-center border border-solid border-gray-300 rounded w-full md:min-w-[300px]">
+        <button
+          className={cn(btnStyles, 'mr-auto')}
+          type="button"
+          onClick={handleDecrease}
+        >
           -
         </button>
         <input
           ref={useMergeRefs([inputRef, ref])}
           id={name}
           className={cn(
-            'block w-full text-center px-2 py-1.5 text-base font-normal rounded-full  transition ease-in-out focus:text-gray-700',
+            'block w-full text-center px-2 py-1.5 text-base font-normal rounded-full transition ease-in-out focus:text-gray-700',
             'focus:bg-white focus:outline-none',
             className
           )}
@@ -46,7 +50,11 @@ export const ValueInput = forwardRef<HTMLInputElement, ValueInputProps>(
           placeholder={placeholder}
           {...rest}
         />
-        <button className={btnStyles} type="button" onClick={handleIncrease}>
+        <button
+          className={cn(btnStyles, 'ml-auto')}
+          type="button"
+          onClick={handleIncrease}
+        >
           +
         </button>
       </div>
