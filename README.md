@@ -5,7 +5,7 @@ It is a cash loan application with most basic loan parameters that change when y
 ## Table of contents
 
 - [General info](#general-info)
-- [Live demo](https://cashloanapp.vercel.app/)
+- [Live demo](https://cashloanapp-nine.vercel.app/)
 - [Technologies](#technologies)
 - [Features](#features)
 - [Status](#status)
@@ -13,14 +13,18 @@ It is a cash loan application with most basic loan parameters that change when y
 
 ## General info
 
-The motivation for this project was to practice React Hooks and how to work with forms in React.
+The motivation for this project was to have fun and try new state system Jotai and Bun package manager.
 
-## [Live demo](https://cashloanapp.vercel.app/)
+## [Live demo](https://cashloanapp-nine.vercel.app/)
 
 ## Technologies
 
-- React - version 1.0
-- React-Router - version 2.0
+- React
+- Next.js
+- Tailwind
+- Framer Motion
+- Bun
+- Jotai
 
 ## Features
 
@@ -28,11 +32,11 @@ List of ready features
 
 - Responsive design
 - Forms validation
-- Loan Parameters calcucation
+- Loan Parameters calculation
 
 ## Status
 
-Project is: _finished_
+Project is: _in_progress_
 
 ## Inspiration
 
