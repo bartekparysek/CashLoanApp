@@ -1,10 +1,6 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
-export function useOnEnterKeyPress(
-  condition: boolean,
-  callback: () => void,
-  options?: boolean | EventListenerOptions
-) {
+export function useOnEnterKeyPress(condition: boolean, callback: () => void, options?: boolean | EventListenerOptions) {
   const currentRefs = useRef({ callback });
 
   useEffect(() => {
@@ -13,7 +9,7 @@ export function useOnEnterKeyPress(
     }
 
     const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Enter') {
+      if (event.key === "Enter") {
         event.stopPropagation();
 
         currentRefs.current.callback();
@@ -21,9 +17,9 @@ export function useOnEnterKeyPress(
     };
 
     // Passing in true for the third parameter causes the event to be captured on the way down
-    window.addEventListener('keydown', onKeyDown, options);
+    window.addEventListener("keydown", onKeyDown, options);
     return () => {
-      window.removeEventListener('keydown', onKeyDown, options);
+      window.removeEventListener("keydown", onKeyDown, options);
     };
-  }, [currentRefs, condition, options]);
+  }, [condition, options]);
 }

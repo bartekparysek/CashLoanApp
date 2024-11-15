@@ -13,7 +13,6 @@ export const BackButton: FC<BackButtonProps> = ({ onClick, className }) => (
       className
     )}
   >
-    <FiChevronLeft className="ml-[-2px] w-5 h-5 md:mr-1" />
-    <span className="hidden md:inline">Back</span>
+    <FiChevronLeft className="w-5 h-5" />
   </Button>
 );

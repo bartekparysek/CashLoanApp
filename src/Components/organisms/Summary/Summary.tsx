@@ -1,11 +1,11 @@
-import { Button } from '@/components/atoms/Button';
-import { Section } from '@/components/atoms/Section';
-import { ValuesList } from '@/components/atoms/ValuesList';
-import { useSetAtom, useAtomValue } from 'jotai';
-import { nextStepAtom } from '@/store/loanStep';
-import { loanAtom } from '@/store/loan';
-import { clientInfoAtom } from '@/store/clientInfo';
-import { SectionHeader } from '@/components/molecules/SectionHeader';
+import { Button } from "@/components/atoms/Button";
+import { Section } from "@/components/atoms/Section";
+import { ValuesList } from "@/components/atoms/ValuesList";
+import { useSetAtom, useAtomValue } from "jotai";
+import { nextStepAtom } from "@/stores/loanStep";
+import { loanAtom } from "@/stores/loan";
+import { clientInfoAtom } from "@/stores/clientInfo";
+import { SectionHeader } from "@/components/molecules/SectionHeader";
 
 export const Summary = () => {
   const loan = useAtomValue(loanAtom);
@@ -14,8 +14,8 @@ export const Summary = () => {
 
   const mappedLoanSummary = Object.keys(loan).map((val) => {
     const name = () => {
-      if (val === 'interestRate') return 'interest rate';
-      if (val === 'totalPayOff') return 'total pay off amount';
+      if (val === "interestRate") return "interest rate";
+      if (val === "totalPayOff") return "total pay off amount";
       return val;
     };
     return {
@@ -32,8 +32,8 @@ export const Summary = () => {
   return (
     <Section>
       <SectionHeader title="Summary" />
-      <div className="flex mb-5 w-full justify-center">
-        <div className="w-full flex flex-col lg:flex-row gap-5 2xl:max-w-[60vw]">
+      <div className="mb-5 flex w-full justify-center">
+        <div className="flex w-full flex-col gap-5 lg:flex-row 2xl:max-w-[60vw]">
           <ValuesList values={mappedLoanSummary} />
           <ValuesList values={mappedClientInfoSummary} />
         </div>
